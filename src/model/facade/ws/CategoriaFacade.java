@@ -16,12 +16,12 @@ public class CategoriaFacade{
 	private CategoriaService categoriaService;
 	
 	@WebMethod
-	public List<Categoria> getCategoriaesSemParametros(){
+	public List<Categoria> getCategoriasSemParametros(){
 		return categoriaService.getCategorias(new Categoria());
 	}
 	
 	@WebMethod
-	public List<Categoria> getCategoriaes(@WebParam Categoria categoria){
+	public List<Categoria> getCategorias(@WebParam Categoria categoria){
 		return categoriaService.getCategorias(categoria);
 	}
 	

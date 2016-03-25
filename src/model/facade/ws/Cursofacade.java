@@ -17,12 +17,12 @@ public class Cursofacade {
 	private CursoService cursoService;
 	
 	@WebMethod
-	public List<Curso> getCursoesSemParametros(){
+	public List<Curso> getCursosSemParametros(){
 		return cursoService.getCursos(new Curso());
 	}
 	
 	@WebMethod
-	public List<Curso> getCursoes(@WebParam Curso curso){
+	public List<Curso> getCursos(@WebParam Curso curso){
 		return cursoService.getCursos(curso);
 	}
 	

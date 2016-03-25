@@ -17,12 +17,12 @@ public class ModalidadeFacade {
 	private ModalidadeService modalidadeService;
 	
 	@WebMethod
-	public List<Modalidade> getModalidadeesSemParametros(){
+	public List<Modalidade> getModalidadesSemParametros(){
 		return modalidadeService.getModalidades(new Modalidade());
 	}
 	
 	@WebMethod
-	public List<Modalidade> getModalidadees(@WebParam Modalidade modalidade){
+	public List<Modalidade> getModalidades(@WebParam Modalidade modalidade){
 		return modalidadeService.getModalidades(modalidade);
 	}
 	
