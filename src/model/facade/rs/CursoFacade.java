@@ -25,7 +25,7 @@ public class CursoFacade {
 	private CursoService cursoService;
 	
 	@GET
-	public List<Curso> getCursos(){
+	public List<Curso> getCursosSemParametro(){
 		return cursoService.getCursos(new Curso());
 	}
 	

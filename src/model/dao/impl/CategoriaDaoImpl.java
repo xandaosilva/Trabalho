@@ -33,15 +33,15 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Categoria> getCategorias(Categoria categoria){
-		StringBuilder hql = new StringBuilder("from Categoria c where 1 = 1");
+		StringBuilder hql = new StringBuilder("from Categoria categoria where 1 = 1");
 		
 		if(categoria.getCodigo() != null)
-			hql.append("and c.codigo = :codigo");
+			hql.append("and categoria.codigo = :codigo");
 		
 		Query query = entityManager.createQuery(hql.toString());
 		
 		if(categoria.getCodigo() != null)
-			query.setParameter("categoria",categoria.getCodigo());
+			query.setParameter("codigo",categoria.getCodigo());
 			
 		return query.getResultList();
 	}

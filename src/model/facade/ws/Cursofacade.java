@@ -22,22 +22,24 @@ public class Cursofacade {
 	}
 	
 	@WebMethod
-	public List<Curso> getCursos(@WebParam Curso curso){
+	public List<Curso> getCursos(@WebParam(name="codigo") Integer codigo){
+		Curso curso = new Curso();
+		curso.setCodigo(codigo);
 		return cursoService.getCursos(curso);
 	}
 	
 	@WebMethod
-	public Curso salvar(@WebParam Curso curso){
+	public Curso salvar(@WebParam(name="curso") Curso curso){
 		return cursoService.salvar(curso);
 	}
 	
 	@WebMethod
-	public void atualizar(@WebParam Curso curso){
+	public void atualizar(@WebParam(name="curso") Curso curso){
 		cursoService.atualizar(curso);
 	}
 	
 	@WebMethod
-	public void excluir(@WebParam Integer codigo){
+	public void excluir(@WebParam(name="codigo") Integer codigo){
 		Curso curso = new Curso();
 		curso.setCodigo(codigo);
 		cursoService.excluir(curso);

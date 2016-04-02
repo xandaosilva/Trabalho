@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name="Categoria")
 @Entity
 @Table(name="Categoria")
 public class Categoria implements Serializable{
@@ -24,19 +24,19 @@ public class Categoria implements Serializable{
 	@Column(name="codigo")
 	private Integer codigo;
 	
-	@Column(name="nome")
+	@Column(name="nome",nullable=false,unique=true)
 	private String nome;
 	
-	@Column(name="porcentagemDoCurso")
+	@Column(name="porcentagemDoCurso",nullable=false)
 	private Double porcentagemDoCurso;
 	
-	@Column(name="porcentagemPorAtividade")
+	@Column(name="porcentagemPorAtividade",nullable=false)
 	private Double porcentagemPorAtividade;
 	
-	@Column(name="descricao")
+	@Column(name="descricao",nullable=false)
 	private String descricao;
 	
-	@Column(name="regulamento")
+	@Column(name="regulamento",nullable=false)
 	private String regulamento;
 	
 	@ManyToOne
@@ -46,9 +46,8 @@ public class Categoria implements Serializable{
 	public Categoria() {
 	}
 
-	public Categoria(Integer codigo, String nome, Double porcentagemDoCurso, 
-			Double porcentagemPorAtividade,String descricao, 
-			String regulamento, Modalidade modalidade) {
+	public Categoria(Integer codigo, String nome, Double porcentagemDoCurso, Double porcentagemPorAtividade,
+			String descricao, String regulamento, Modalidade modalidade) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.porcentagemDoCurso = porcentagemDoCurso;
@@ -137,5 +136,5 @@ public class Categoria implements Serializable{
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
-	}	
+	}
 }

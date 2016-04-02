@@ -13,8 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement
+@XmlRootElement(namespace="Modalidade")
 @Entity
 @Table(name="Modalidade")
 public class Modalidade implements Serializable{
@@ -26,7 +27,7 @@ public class Modalidade implements Serializable{
 	@Column(name="codigo")
 	private Integer codigo;
 	
-	@Column(name="nome")
+	@Column(name="nome",nullable=false,unique=true)
 	private String nome;
 	
 	@ManyToOne
@@ -70,6 +71,7 @@ public class Modalidade implements Serializable{
 		this.curso = curso;
 	}
 
+	@XmlTransient
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}

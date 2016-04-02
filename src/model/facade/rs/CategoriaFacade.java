@@ -26,7 +26,7 @@ public class CategoriaFacade {
 	private CategoriaService categoriaService;
 	
 	@GET
-	public List<Categoria> getCategorias(){
+	public List<Categoria> getCategoriasSemParametro(){
 		return categoriaService.getCategorias(new Categoria());
 	}
 	

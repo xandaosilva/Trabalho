@@ -25,7 +25,7 @@ public class ModalidadeFacade {
 	private ModalidadeService modalidadeService;
 	
 	@GET
-	public List<Modalidade> getModalidades(){
+	public List<Modalidade> getModalidadesSemParametro(){
 		return modalidadeService.getModalidades(new Modalidade());
 	}
 	

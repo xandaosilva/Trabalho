@@ -11,8 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement
+@XmlRootElement(namespace="Curso")
 @Entity
 @Table(name="Curso")
 public class Curso implements Serializable{
@@ -24,7 +25,7 @@ public class Curso implements Serializable{
 	@Column(name="codigo")
 	private Integer codigo;
 	
-	@Column(name="nome")
+	@Column(name="nome",nullable=false,unique=true)
 	private String nome;
 	
 	@OneToMany(mappedBy="curso")
@@ -55,6 +56,7 @@ public class Curso implements Serializable{
 		this.nome = nome;
 	}
 
+	@XmlTransient
 	public List<Modalidade> getModalidades() {
 		return modalidades;
 	}

@@ -15,7 +15,6 @@ public class ModalidadeServiceImpl implements ModalidadeService {
 	private ModalidadeDao modalidadeDao;
 	
 	@Override
-	@Transactional
 	public List<Modalidade> getModalidades(Modalidade modalidade){
 		return modalidadeDao.getModalidades(modalidade);
 	}
