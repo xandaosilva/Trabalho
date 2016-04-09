@@ -22,24 +22,24 @@ public class ModalidadeFacade {
 	}
 	
 	@WebMethod
-	public List<Modalidade> getModalidades(@WebParam Integer codigo){
+	public List<Modalidade> getModalidades(@WebParam(name="codigo") Integer codigo){
 		Modalidade modalidade = new Modalidade();
 		modalidade.setCodigo(codigo);
 		return modalidadeService.getModalidades(modalidade);
 	}
 	
 	@WebMethod
-	public Modalidade salvar(@WebParam Modalidade modalidade){
+	public Modalidade salvar(@WebParam(name="modalidade") Modalidade modalidade){
 		return modalidadeService.salvar(modalidade);
 	}
 	
 	@WebMethod
-	public void atualizar(@WebParam Modalidade modalidade){
+	public void atualizar(@WebParam(name="modalidade") Modalidade modalidade){
 		modalidadeService.atualizar(modalidade);
 	}
 	
 	@WebMethod
-	public void excluir(@WebParam Integer codigo){
+	public void excluir(@WebParam(name="codigo") Integer codigo){
 		Modalidade modalidade = new Modalidade();
 		modalidade.setCodigo(codigo);
 		modalidadeService.excluir(modalidade);
