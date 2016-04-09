@@ -21,24 +21,24 @@ public class CategoriaFacade{
 	}
 	
 	@WebMethod
-	public List<Categoria> getCategorias(@WebParam(name="codigo") Integer codigo){
+	public List<Categoria> getCategorias(@WebParam Integer codigo){
 		Categoria categoria = new Categoria();
 		categoria.setCodigo(codigo);
 		return categoriaService.getCategorias(categoria);
 	}
 	
 	@WebMethod
-	public Categoria salvar(@WebParam(name="categoria") Categoria categoria){
+	public Categoria salvar(@WebParam Categoria categoria){
 		return categoriaService.salvar(categoria);
 	}
 	
 	@WebMethod
-	public void atualizar(@WebParam(name="categoria") Categoria categoria){
+	public void atualizar(@WebParam Categoria categoria){
 		categoriaService.atualizar(categoria);
 	}
 	
 	@WebMethod
-	public void excluir(@WebParam(name="codigo") Integer codigo){
+	public void excluir(@WebParam Integer codigo){
 		Categoria categoria = new Categoria();
 		categoria.setCodigo(codigo);
 		categoriaService.excluir(categoria);

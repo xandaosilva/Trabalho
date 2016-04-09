@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="Categoria")
+@XmlRootElement(name="categoria")
 @Entity
 @Table(name="Categoria")
 public class Categoria implements Serializable{

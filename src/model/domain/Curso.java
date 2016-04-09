@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement(namespace="Curso")
+@XmlRootElement(name="curso")
 @Entity
 @Table(name="Curso")
 public class Curso implements Serializable{

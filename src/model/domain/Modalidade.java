@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@XmlRootElement(namespace="Modalidade")
+@XmlRootElement(name="modalidade")
 @Entity
 @Table(name="Modalidade")
 public class Modalidade implements Serializable{

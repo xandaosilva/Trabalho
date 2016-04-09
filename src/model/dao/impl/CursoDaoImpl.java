@@ -33,10 +33,10 @@ public class CursoDaoImpl implements CursoDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Curso> getCursos(Curso curso){
-		StringBuilder hql = new StringBuilder("from Curso curso where 1 = 1");
+		StringBuilder hql = new StringBuilder("from Curso c where 1 = 1 ");
 		
 		if(curso.getCodigo() != null)
-			hql.append("and curso.codigo = :codigo");
+			hql.append("and c.codigo = :codigo");
 		
 		Query query = entityManager.createQuery(hql.toString());
 		

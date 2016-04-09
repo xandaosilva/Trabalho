@@ -33,10 +33,10 @@ public class ModalidadeDaoImpl implements ModalidadeDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Modalidade> getModalidades(Modalidade modalidade){
-		StringBuilder hql = new StringBuilder("from Modalidade modalidade where 1 = 1");
+		StringBuilder hql = new StringBuilder("from Modalidade m where 1 = 1");
 		
 		if(modalidade.getCodigo() != null)
-			hql.append("and modalidade.codigo = :codigo");
+			hql.append("and m.codigo = :codigo");
 		
 		Query query = entityManager.createQuery(hql.toString());
 		
