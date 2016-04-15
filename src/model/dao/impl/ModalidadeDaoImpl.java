@@ -11,7 +11,7 @@ import model.domain.Modalidade;
 
 public class ModalidadeDaoImpl implements ModalidadeDao{
 
-	@PersistenceContext(name="TrabalhoPU")
+	@PersistenceContext(unitName="TrabalhoPU")
 	private EntityManager entityManager;
 	
 	@Override
@@ -33,7 +33,7 @@ public class ModalidadeDaoImpl implements ModalidadeDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Modalidade> getModalidades(Modalidade modalidade){
-		StringBuilder hql = new StringBuilder("from Modalidade m where 1 = 1");
+		StringBuilder hql = new StringBuilder("select m from Modalidade m where 1 = 1");
 		
 		if(modalidade.getCodigo() != null)
 			hql.append("and m.codigo = :codigo");

@@ -104,4 +104,9 @@ public class Modalidade implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Modalidade [codigo=" + codigo + ", nome=" + nome + "]";
+	}
 }

@@ -11,7 +11,7 @@ import model.domain.Curso;
 
 public class CursoDaoImpl implements CursoDao{
 
-	@PersistenceContext(name="TrabalhoPU")
+	@PersistenceContext(unitName="TrabalhoPU")
 	private EntityManager entityManager;
 	
 	@Override
@@ -33,7 +33,7 @@ public class CursoDaoImpl implements CursoDao{
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Curso> getCursos(Curso curso){
-		StringBuilder hql = new StringBuilder("from Curso c where 1 = 1 ");
+		StringBuilder hql = new StringBuilder("select c from Curso c where 1 = 1 ");
 		
 		if(curso.getCodigo() != null)
 			hql.append("and c.codigo = :codigo");
