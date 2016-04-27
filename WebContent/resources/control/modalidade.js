@@ -1,19 +1,32 @@
 var modalidadeModule = angular.module("modalidadeModule",[]);
 
 modalidadeModule.controller("modalidadeController", function($scope,$http) {
-	url = "http://localhost:8080/Trabalho/rs/modalidade";
+	urlModalidade = "http://localhost:8080/Trabalho/rs/modalidade";
+	urlCurso = "http://localhost:8080/Trabalho/rs/curso";
 	
 	$scope.novo = function(){
 		$scope.modalidade = "";
 	}
 	
-	$scope.seleciona = function(modalidade){
+	$scope.selecionaModalidade = function(modalidade){
 		$scope.modalidade = modalidade;
 	}
 	
-	$scope.pesquisar = function(){
-		$http.get(url).success(function(modalidades) {
+//	$scope.selecionaCurso = function(curso){
+//		$scope.modalidade.curso = curso;
+//	}
+	
+	$scope.pesquisarModalidade = function(){
+		$http.get(urlModalidade).success(function(modalidades) {
 			$scope.modalidades = modalidades;
+		}).error(function(mensagemErro) {
+			alert(mensagemErro);
+		});
+	}
+	
+	$scope.pesquisarCurso = function(){
+		$http.get(urlCurso).success(function(cursos) {
+			$scope.cursos = cursos;
 		}).error(function(mensagemErro) {
 			alert(mensagemErro);
 		});
@@ -21,7 +34,7 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 	
 	$scope.salvar = function(){
 		if($scope.modalidade.codigo === ""){
-			$http.post(url,$scope.modalidade).success(function(modalidade) {
+			$http.post(urlModalidade,$scope.modalidade).success(function(modalidade) {
 				$scope.modalidade.push(modalidade);
 				$scope.novo();
 			}).error(function(mensagemErro){
@@ -29,8 +42,8 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 			});
 		}
 		else{
-			$hhtp.put(url,$scope.modalidade).success(function() {
-				$scope.pesquisar();
+			$hhtp.put(urlModalidade,$scope.modalidade).success(function() {
+				$scope.pesquisarModalidade();
 				$scope.novo();
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
@@ -43,9 +56,9 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 			alert("Selecione alguma categoria");
 		}
 		else{
-			urlAux = url + "/" + $scope.modalidade.codigo;
+			urlAux = urlModalidade + "/" + $scope.modalidade.codigo;
 			$http.delete(urlAux).success(function() {
-				$scope.pesquisar();
+				$scope.pesquisarModalidade();
 				$scope.novo();
 			}).error(function(mensagemErro) {
 				alert(mensagemErro);
@@ -53,5 +66,6 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 		}
 	}
 	
-	$scope.pesquisar();
+	$scope.pesquisarModalidade();
+	$scope.pesquisarCurso();
 });

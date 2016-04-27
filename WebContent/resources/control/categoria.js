@@ -1,13 +1,14 @@
 var categoriaModule = angular.module("categoriaModule",[]);
 
 categoriaModule.controller("categoriaController", function($scope,$http) {
-	url = "http://localhost:8080/Trabalho/rs/categoria";
+	urlCategoria = "http://localhost:8080/Trabalho/rs/categoria";
+	urlModalidade = "http://localhost:8080/Trabalho/rs/modalidade";
 	
 	$scope.novo = function(){
 		$scope.categoria = "";
 	}
 
-	$scope.seleciona = function(categoria){
+	$scope.selecionaCategoria = function(categoria){
 		$scope.categoria = categoria;
 	}
 	
@@ -15,9 +16,17 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 //		$scope.categoria.modalidade = modalidade;
 //	}
 	
-	$scope.pesquisar = function(){
-		$http.get(url).success(function(categorias) {
+	$scope.pesquisarCategoria = function(){
+		$http.get(urlCategoria).success(function(categorias) {
 			$scope.categorias = categorias;
+		}).error(function(erro) {
+			alert(erro);
+		});
+	}
+	
+	$scope.pesquisarModalidade = function(){
+		$http.get(urlModalidade).success(function(modalidades) {
+			$scope.modalidades = modalidades;
 		}).error(function(erro) {
 			alert(erro);
 		});
@@ -25,7 +34,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 	
 	$scope.salvar = function(){
 		if($scope.categoria.codigo === ""){
-			$http.post(url,$scope.categoria).success(function(categoria) {
+			$http.post(urlCategoria,$scope.categoria).success(function(categoria) {
 				$scope.categoria.push(categoria);
 				$scope.novo();
 			}).error(function(erro){
@@ -33,8 +42,8 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			});
 		}
 		else{
-			$hhtp.put(url,$scope.categoria).success(function() {
-				$scope.pesquisar();
+			$hhtp.put(urlCategoria,$scope.categoria).success(function() {
+				$scope.pesquisarCategoria();
 				$scope.novo();
 			}).error(function(erro){
 				alert(erro);
@@ -49,7 +58,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 		else{
 			urlAux = url + "/" + $scope.categoria.codigo;
 			$http.delete(urlAux).success(function() {
-				$scope.pesquisar();
+				$scope.pesquisarCategoria();
 				$scope.novo();
 			}).error(function(mensagemErro) {
 				alert(mensagemErro);
@@ -57,5 +66,6 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 		}
 	}
 	
-	$scope.pesquisar();
+	$scope.pesquisarCategoria();
+	$scope.pesquisarModalidade();
 });
