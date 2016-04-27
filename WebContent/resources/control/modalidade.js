@@ -38,7 +38,7 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 			});
 		}
 		else{
-			$hhtp.put(urlModalidade,$scope.modalidade).success(function() {
+			$http.put(urlModalidade,$scope.modalidade).success(function() {
 				$scope.pesquisarModalidade();
 				$scope.novo();
 			}).error(function(mensagemErro){

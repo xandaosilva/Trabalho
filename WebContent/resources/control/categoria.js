@@ -38,7 +38,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			});
 		}
 		else{
-			$hhtp.put(urlCategoria,$scope.categoria).success(function() {
+			$http.put(urlCategoria,$scope.categoria).success(function() {
 				$scope.pesquisarCategoria();
 				$scope.novo();
 			}).error(function(erro){
