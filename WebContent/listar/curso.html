@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="cursoModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta charset="ISO-8859-1">
 	<title>Listar curso</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
 	<script src="../resources/js/angular.min.js"></script>
@@ -12,5 +11,17 @@
 </head>
 <body ng-controller="cursoController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Listar curso</div><hr>
+		<div role="tabpanel" class="tab-pane" id="dados"><br>
+			<input type="text" class="form-control" ng-model="criterio" placeholder="O que você está procurando ?" /><br>
+			<table class="table table-bordered">
+				<th>Código</th><th>Nome</th>
+				<tr ng-repeat="curso in cursos | filter:criterio">
+					<td>{{curso.codigo}}</td><td>{{curso.nome}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

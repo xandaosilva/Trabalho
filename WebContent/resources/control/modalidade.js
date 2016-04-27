@@ -12,10 +12,6 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 		$scope.modalidade = modalidade;
 	}
 	
-//	$scope.selecionaCurso = function(curso){
-//		$scope.modalidade.curso = curso;
-//	}
-	
 	$scope.pesquisarModalidade = function(){
 		$http.get(urlModalidade).success(function(modalidades) {
 			$scope.modalidades = modalidades;

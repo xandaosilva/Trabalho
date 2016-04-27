@@ -29,7 +29,7 @@ cursoModule.controller("cursoController", function($scope,$http) {
 			});
 		}
 		else{
-			$hhtp.put(url,$scope.curso).success(function() {
+			$http.put(url,$scope.curso).success(function() {
 				$scope.pesquisar();
 				$scope.novo();
 			}).error(function(mensagemErro){

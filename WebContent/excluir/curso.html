@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="cursoModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta charset="ISO-8859-1">
 	<title>Excluir curso</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
 	<script src="../resources/js/angular.min.js"></script>
@@ -12,5 +11,38 @@
 </head>
 <body ng-controller="cursoController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Excluir curso</div><hr>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputCodigo" class="col-sm-1 control-label">Código</label>
+				<div class="col-sm-1">
+					<input type="text" class="form-control" id="inputEmail3" 
+						splaceholder="Código" disabled ng-model="curso.codigo">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputNome" class="col-sm-1 control-label">Nome</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="inputPassword3" 
+						placeholder="Nome" ng-model="curso.nome" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-9">
+					<button type="submit" class="btn btn-default" ng-click="excluir();">Excluir</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="dados"><br>
+		<input type="text" class="form-control" ng-model="criterio" placeholder="O que você está procurando ?" /><br>
+		<table class="table table-bordered">
+			<th>Código</th><th>Nome</th>
+			<tr ng-repeat="curso in cursos | filter:criterio" ng-click="seleciona(curso);">
+				<td>{{curso.codigo}}</td><td>{{curso.nome}}</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

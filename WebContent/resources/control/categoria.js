@@ -12,10 +12,6 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 		$scope.categoria = categoria;
 	}
 	
-//	$scope.selecionaModalidade = function(modalidade){
-//		$scope.categoria.modalidade = modalidade;
-//	}
-	
 	$scope.pesquisarCategoria = function(){
 		$http.get(urlCategoria).success(function(categorias) {
 			$scope.categorias = categorias;
