@@ -52,7 +52,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			alert("Selecione alguma categoria");
 		}
 		else{
-			urlAux = url + "/" + $scope.categoria.codigo;
+			urlAux = urlCategoria + "/" + $scope.categoria.codigo;
 			$http.delete(urlAux).success(function() {
 				$scope.pesquisarCategoria();
 				$scope.novo();

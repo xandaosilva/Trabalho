@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="categoriaModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta charset="ISO-8859-1">
 	<title>Excluir categoria</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
 	<script src="../resources/js/angular.min.js"></script>
@@ -12,5 +11,79 @@
 </head>
 <body ng-controller="categoriaController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Excluir categoria</div><hr>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputCodigo" class="col-sm-1 control-label">Código</label>
+				<div class="col-sm-1">
+					<input type="text" class="form-control" id="inputCodigo" 
+						splaceholder="Código" disabled ng-model="categoria.codigo">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputNome" class="col-sm-1 control-label">Nome</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="inputNome" 
+						placeholder="Nome" ng-model="categoria.nome" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPorcentagemDoCurso" class="col-sm-2 control-label">% do curso</label>
+				<div class="col-sm-2">
+					<input type="number" class="form-control" id="inputPorcentagemDoCurso" 
+						placeholder="% do curso" ng-model="categoria.porcentagemDoCurso" required>
+				</div>
+				
+				<label for="inputPorcentagemPorAtividade" class="col-sm-2 control-label">% por atividade</label>
+				<div class="col-sm-2">
+					<input type="number" class="form-control" id="inputPorcentagemPorAtividade" 
+						placeholder="% por atividade" ng-model="categoria.porcentagemPorAtividade" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputDescricao" class="col-sm-1 control-label">Descrição</label>
+				<div class="col-sm-7">
+					<textarea class="form-control" rows="3" id="inputDescricao" 
+					placeholder="Descrição" ng-model="categoria.descricao" required>
+					</textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputRegulamento" class="col-sm-1 control-label">Regulamento</label>
+				<div class="col-sm-7">
+					<textarea class="form-control" rows="3" id="inputRegulamento" 
+					placeholder="Regulamento" ng-model="categoria.regulamento" required>
+					</textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputModalidade" class="col-sm-1 control-label">Modalidade</label>
+				<div class="col-sm-7">
+					<select class="form-control" ng-model="categoria.modalidade"
+					ng-options="modalidade.nome for modalidade in modalidades track by modalidade.codigo" required>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-9">
+					<button type="submit" class="btn btn-default" ng-click="excluir();">Excluir</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="dados"><br>
+		<input type="text" class="form-control" ng-model="criterio" placeholder="O que você está procurando ?" /><br>
+		<table class="table table-bordered">
+			<th>Código</th><th>Nome</th><th>% do curso</th><th>% por atividade</ht><th>Modalidade</th>
+			<tr ng-repeat="categoria in categorias | filter:criterio" ng-click="selecionaCategoria(categoria);">
+				<td>{{categoria.codigo}}</td>
+				<td>{{categoria.nome}}</td>
+				<td>{{categoria.porcentagemDoCurso}}</td>
+				<td>{{categoria.porcentagemPorAtividade}}</td>
+				<td>{{categoria.modalidade.nome}}</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

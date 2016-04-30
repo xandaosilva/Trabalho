@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="categoriaModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta charset="ISO-8859-1">
 	<title>Listar categoria</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
 	<script src="../resources/js/angular.min.js"></script>
@@ -12,5 +11,19 @@
 </head>
 <body ng-controller="categoriaController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Listar categorias</div><hr>
+		<input type="text" class="form-control" ng-model="criterio" placeholder="O que você está procurando ?" /><br>
+		<table class="table table-bordered">
+			<th>Código</th><th>Nome</th><th>% do curso</th><th>% por atividade</ht><th>Modalidade</th>
+			<tr ng-repeat="categoria in categorias | filter:criterio" ng-click="selecionaCategoria(categoria);">
+				<td>{{categoria.codigo}}</td>
+				<td>{{categoria.nome}}</td>
+				<td>{{categoria.porcentagemDoCurso}}</td>
+				<td>{{categoria.porcentagemPorAtividade}}</td>
+				<td>{{categoria.modalidade.nome}}</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
