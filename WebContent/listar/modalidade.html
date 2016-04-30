@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="modalidadeModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta charset="ISO-8859-1">
+<!-- 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> -->
 	<title>Listar modalidade</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
 	<script src="../resources/js/angular.min.js"></script>
@@ -12,5 +12,17 @@
 </head>
 <body ng-controller="modalidadeController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Listar modalidades</div><hr>
+		<input type="text" class="form-control" ng-model="criterio" placeholder="O que você está procurando ?" /><br>
+		<table class="table table-bordered">
+			<th>Código</th><th>Nome</th><th>Curso</th>
+			<tr ng-repeat="modalidade in modalidades | filter:criterio">
+				<td>{{modalidade.codigo}}</td>
+				<td>{{modalidade.nome}}</td>
+				<td>{{modalidade.curso.nome}}</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

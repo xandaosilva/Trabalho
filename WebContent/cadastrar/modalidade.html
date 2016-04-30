@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="modalidadeModule">
 <head>
-	<!--<meta charset="ISO-8859-1"> -->
+	<meta charset="ISO-8859-1">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Cadastrar modalidade</title>
 	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css">
@@ -12,5 +12,37 @@
 </head>
 <body ng-controller="modalidadeController">
 	<div ng-include="'../util/menuAux.html'"></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de modalidade</div><hr>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputCodigo" class="col-sm-1 control-label">Código</label>
+				<div class="col-sm-1">
+					<input type="text" class="form-control" id="inputEmail3" 
+						splaceholder="Código" disabled ng-model="modalidade.codigo">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputNome" class="col-sm-1 control-label">Nome</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="inputPassword3" 
+						placeholder="Nome" ng-model="modalidade.nome" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputNome" class="col-sm-1 control-label">Curso</label>
+				<div class="col-sm-7">
+					<select class="form-control" ng-model="modalidade.curso"
+					ng-options="curso.nome for curso in cursos track by curso.codigo">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-9">
+					<button type="submit" class="btn btn-default" ng-click="salvar();">Salvar</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

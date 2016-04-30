@@ -28,10 +28,10 @@ public class Categoria implements Serializable{
 	private String nome;
 	
 	@Column(name="porcentagemDoCurso",nullable=false)
-	private Double porcentagemDoCurso;
+	private Integer porcentagemDoCurso;
 	
 	@Column(name="porcentagemPorAtividade",nullable=false)
-	private Double porcentagemPorAtividade;
+	private Integer porcentagemPorAtividade;
 	
 	@Column(name="descricao",nullable=false)
 	private String descricao;
@@ -46,7 +46,7 @@ public class Categoria implements Serializable{
 	public Categoria() {
 	}
 
-	public Categoria(Integer codigo, String nome, Double porcentagemDoCurso, Double porcentagemPorAtividade,
+	public Categoria(Integer codigo, String nome, Integer porcentagemDoCurso, Integer porcentagemPorAtividade,
 			String descricao, String regulamento, Modalidade modalidade) {
 		this.codigo = codigo;
 		this.nome = nome;
@@ -73,19 +73,19 @@ public class Categoria implements Serializable{
 		this.nome = nome;
 	}
 
-	public Double getPorcentagemDoCurso() {
+	public Integer getPorcentagemDoCurso() {
 		return porcentagemDoCurso;
 	}
 
-	public void setPorcentagemDoCurso(Double porcentagemDoCurso) {
+	public void setPorcentagemDoCurso(Integer porcentagemDoCurso) {
 		this.porcentagemDoCurso = porcentagemDoCurso;
 	}
 
-	public Double getPorcentagemPorAtividade() {
+	public Integer getPorcentagemPorAtividade() {
 		return porcentagemPorAtividade;
 	}
 
-	public void setPorcentagemPorAtividade(Double porcentagemPorAtividade) {
+	public void setPorcentagemPorAtividade(Integer porcentagemPorAtividade) {
 		this.porcentagemPorAtividade = porcentagemPorAtividade;
 	}
 
