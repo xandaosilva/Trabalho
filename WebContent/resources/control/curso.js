@@ -39,7 +39,7 @@ cursoModule.controller("cursoController", function($scope,$http) {
 	}
 	
 	$scope.excluir = function(){
-		if($scope.curso.codigo === ""){
+		if($scope.curso.codigo == ""){
 			alert("Selecione alguma categoria");
 		}
 		else{

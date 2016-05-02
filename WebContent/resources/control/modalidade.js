@@ -48,8 +48,8 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 	}
 	
 	$scope.excluir = function(){
-		if($scope.modalidade.codigo === ""){
-			alert("Selecione alguma categoria");
+		if($scope.modalidade.codigo == ""){
+			alert("Selecione alguma modalidade");
 		}
 		else{
 			urlAux = urlModalidade + "/" + $scope.modalidade.codigo;

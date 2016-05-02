@@ -15,16 +15,16 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 	$scope.pesquisarCategoria = function(){
 		$http.get(urlCategoria).success(function(categorias) {
 			$scope.categorias = categorias;
-		}).error(function(erro) {
-			alert(erro);
+		}).error(function(mensagemErro) {
+			alert(mensagemErro);
 		});
 	}
 	
 	$scope.pesquisarModalidade = function(){
 		$http.get(urlModalidade).success(function(modalidades) {
 			$scope.modalidades = modalidades;
-		}).error(function(erro) {
-			alert(erro);
+		}).error(function(mensagemErro) {
+			alert(mensagemErro);
 		});
 	}
 	
@@ -33,16 +33,16 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			$http.post(urlCategoria,$scope.categoria).success(function(categoria) {
 				$scope.categoria.push(categoria);
 				$scope.novo();
-			}).error(function(erro){
-				alert(erro);
+			}).error(function(mensagemErro){
+				alert(mensagemErro);
 			});
 		}
 		else{
 			$http.put(urlCategoria,$scope.categoria).success(function() {
 				$scope.pesquisarCategoria();
 				$scope.novo();
-			}).error(function(erro){
-				alert(erro);
+			}).error(function(mensagemErro){
+				alert(mensagemErro);
 			});
 		}
 	}
