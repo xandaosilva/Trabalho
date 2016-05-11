@@ -20,10 +20,11 @@ cursoModule.controller("cursoController", function($scope,$http) {
 	}
 	
 	$scope.salvar = function(){
-		if($scope.curso.codigo === ""){
+		if($scope.curso.codigo == undefined){
 			$http.post(url,$scope.curso).success(function(curso) {
-				$scope.curso.push(curso);
+				$scope.cursos.push($scope.curso);
 				$scope.novo();
+				alert("Cadastro realizado com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -32,6 +33,7 @@ cursoModule.controller("cursoController", function($scope,$http) {
 			$http.put(url,$scope.curso).success(function() {
 				$scope.pesquisar();
 				$scope.novo();
+				alert("Alteracao realizada com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -39,7 +41,7 @@ cursoModule.controller("cursoController", function($scope,$http) {
 	}
 	
 	$scope.excluir = function(){
-		if($scope.curso.codigo == ""){
+		if($scope.curso.codigo == undefined){
 			alert("Selecione alguma categoria");
 		}
 		else{
@@ -47,6 +49,7 @@ cursoModule.controller("cursoController", function($scope,$http) {
 			$http.delete(urlAux).success(function() {
 				$scope.pesquisar();
 				$scope.novo();
+				alert("Exclusao realizada com sucesso .");
 			}).error(function(mensagemErro) {
 				alert(mensagemErro);
 			});

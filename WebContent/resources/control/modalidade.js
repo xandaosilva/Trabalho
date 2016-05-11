@@ -29,10 +29,11 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 	}
 	
 	$scope.salvar = function(){
-		if($scope.modalidade.codigo === ""){
+		if($scope.modalidade.codigo == undefined){
 			$http.post(urlModalidade,$scope.modalidade).success(function(modalidade) {
-				$scope.modalidade.push(modalidade);
+				$scope.modalidades.push($scope.modalidade);
 				$scope.novo();
+				alert("Cadastro realizado com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -41,6 +42,7 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 			$http.put(urlModalidade,$scope.modalidade).success(function() {
 				$scope.pesquisarModalidade();
 				$scope.novo();
+				alert("Atualizacao realizada com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -48,7 +50,7 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 	}
 	
 	$scope.excluir = function(){
-		if($scope.modalidade.codigo == ""){
+		if($scope.modalidade.codigo == undefined){
 			alert("Selecione alguma modalidade");
 		}
 		else{
@@ -56,6 +58,7 @@ modalidadeModule.controller("modalidadeController", function($scope,$http) {
 			$http.delete(urlAux).success(function() {
 				$scope.pesquisarModalidade();
 				$scope.novo();
+				alert("Exclusao realizada com sucesso .");
 			}).error(function(mensagemErro) {
 				alert(mensagemErro);
 			});

@@ -29,10 +29,11 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 	}
 	
 	$scope.salvar = function(){
-		if($scope.categoria.codigo === ""){
+		if($scope.categoria.codigo == undefined){
 			$http.post(urlCategoria,$scope.categoria).success(function(categoria) {
-				$scope.categoria.push(categoria);
+				$scope.categorias.push($scope.categoria);
 				$scope.novo();
+				alert("Cadastro realizado com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -41,6 +42,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			$http.put(urlCategoria,$scope.categoria).success(function() {
 				$scope.pesquisarCategoria();
 				$scope.novo();
+				alert("Alteracao realizada com sucesso .");
 			}).error(function(mensagemErro){
 				alert(mensagemErro);
 			});
@@ -48,7 +50,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 	}
 	
 	$scope.excluir = function(){
-		if($scope.categoria.codigo === ""){
+		if($scope.categoria.codigo == undefined){
 			alert("Selecione alguma categoria");
 		}
 		else{
@@ -56,6 +58,7 @@ categoriaModule.controller("categoriaController", function($scope,$http) {
 			$http.delete(urlAux).success(function() {
 				$scope.pesquisarCategoria();
 				$scope.novo();
+				alert("Exclusao realizada com sucesso .");
 			}).error(function(mensagemErro) {
 				alert(mensagemErro);
 			});
