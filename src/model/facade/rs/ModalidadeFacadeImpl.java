@@ -14,21 +14,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import model.domain.Modalidade;
+import model.facade.ModalidadeFacade;
 import model.service.ModalidadeService;
 
 @Path("/modalidade")
 @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-public class ModalidadeFacade {
+public class ModalidadeFacadeImpl implements ModalidadeFacade{
 
 	@Inject
 	private ModalidadeService modalidadeService;
 	
+	@Override
 	@GET
 	public List<Modalidade> getModalidadesSemParametro(){
 		return modalidadeService.getModalidades(new Modalidade());
 	}
 	
+	@Override
 	@GET
 	@Path("/{codigo}")
 	public List<Modalidade> getModalidades(@PathParam("codigo") Integer codigo){
@@ -37,16 +40,19 @@ public class ModalidadeFacade {
 		return modalidadeService.getModalidades(modalidade);
 	}
 	
+	@Override
 	@POST
 	public Modalidade salvar(Modalidade modalidade){
 		return modalidadeService.salvar(modalidade);
 	}
 	
+	@Override
 	@PUT
 	public void atualizar(Modalidade modalidade){
 		modalidadeService.atualizar(modalidade);
 	}
 	
+	@Override
 	@DELETE
 	@Path("/{codigo}")
 	public void excluir(@PathParam("codigo") Integer codigo){

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -25,7 +27,9 @@ public class Curso implements Serializable{
 	@Column(name="codigo")
 	private Integer codigo;
 	
-	@Column(name="nome",nullable=false,unique=true)
+	@NotNull(message="O campo nome é obrigatório .")
+	@Size(min=15,message="O campo nome deverár ter ao menos 15 caracteres .")
+	@Column(name="nome",unique=true)
 	private String nome;
 	
 	@OneToMany(mappedBy="curso")

@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="categoria")
@@ -24,19 +28,29 @@ public class Categoria implements Serializable{
 	@Column(name="codigo")
 	private Integer codigo;
 	
-	@Column(name="nome",nullable=false,unique=true)
+	@NotNull(message="O campo nome é obrigatório .")
+	@Size(min=10,message="O campo nome deverár ter ao menos 10 caracteres .")
+	@Column(name="nome",unique=true)
 	private String nome;
 	
-	@Column(name="porcentagemDoCurso",nullable=false)
+	@NotNull(message="O campo % do curso é obrigatório .")
+	@Max(100)
+	@Min(10)
+	@Column(name="porcentagemDoCurso")
 	private Integer porcentagemDoCurso;
 	
-	@Column(name="porcentagemPorAtividade",nullable=false)
+	@NotNull(message="O campo % por atividade é obrigatório .")
+	@Max(100)
+	@Min(10)
+	@Column(name="porcentagemPorAtividade")
 	private Integer porcentagemPorAtividade;
 	
-	@Column(name="descricao",nullable=false)
+	@NotNull(message="O campo descrição é obrigatório .")
+	@Column(name="descricao")
 	private String descricao;
 	
-	@Column(name="regulamento",nullable=false)
+	@NotNull(message="O campo regulamento é obrigatório .")
+	@Column(name="regulamento")
 	private String regulamento;
 	
 	@ManyToOne

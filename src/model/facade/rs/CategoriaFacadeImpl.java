@@ -15,21 +15,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import model.domain.Categoria;
+import model.facade.CategoriaFacede;
 import model.service.CategoriaService;
 
 @Path("/categoria")
 @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-public class CategoriaFacade {
+public class CategoriaFacadeImpl implements CategoriaFacede{
 
 	@Inject
 	private CategoriaService categoriaService;
 	
+	@Override
 	@GET
 	public List<Categoria> getCategoriasSemParametro(){
 		return categoriaService.getCategorias(new Categoria());
 	}
 	
+	@Override
 	@GET
 	@Path("/{codigo}")
 	public List<Categoria> getCategorias(@PathParam("codigo") Integer codigo){
@@ -38,16 +41,19 @@ public class CategoriaFacade {
 		return categoriaService.getCategorias(categoria);
 	}
 	
+	@Override
 	@POST
 	public Categoria salvar(Categoria categoria){
 		return categoriaService.salvar(categoria);
 	}
 	
+	@Override
 	@PUT
 	public void atualizar(Categoria categoria){
 		categoriaService.atualizar(categoria);
 	}
 	
+	@Override
 	@DELETE
 	@Path("/{codigo}")
 	public void excluir(@PathParam("codigo") Integer codigo){

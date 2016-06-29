@@ -8,19 +8,22 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import model.domain.Modalidade;
+import model.facade.ModalidadeFacade;
 import model.service.ModalidadeService;
 
 @WebService(serviceName="ws/modalidade")
-public class ModalidadeFacade {
+public class ModalidadeFacadeImpl implements ModalidadeFacade{
 
 	@Inject
 	private ModalidadeService modalidadeService;
 	
+	@Override
 	@WebMethod
-	public List<Modalidade> getModalidadesSemParametros(){
+	public List<Modalidade> getModalidadesSemParametro(){
 		return modalidadeService.getModalidades(new Modalidade());
 	}
 	
+	@Override
 	@WebMethod
 	public List<Modalidade> getModalidades(@WebParam(name="codigo") Integer codigo){
 		Modalidade modalidade = new Modalidade();
@@ -28,16 +31,19 @@ public class ModalidadeFacade {
 		return modalidadeService.getModalidades(modalidade);
 	}
 	
+	@Override
 	@WebMethod
 	public Modalidade salvar(@WebParam(name="modalidade") Modalidade modalidade){
 		return modalidadeService.salvar(modalidade);
 	}
 	
+	@Override
 	@WebMethod
 	public void atualizar(@WebParam(name="modalidade") Modalidade modalidade){
 		modalidadeService.atualizar(modalidade);
 	}
 	
+	@Override
 	@WebMethod
 	public void excluir(@WebParam(name="codigo") Integer codigo){
 		Modalidade modalidade = new Modalidade();

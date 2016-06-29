@@ -19,6 +19,8 @@ cursoModule.controller("cursoController", function($scope,$http) {
 		});
 	}
 	
+
+	
 	$scope.salvar = function(){
 		if($scope.curso.codigo == undefined){
 			$http.post(url,$scope.curso).success(function(curso) {

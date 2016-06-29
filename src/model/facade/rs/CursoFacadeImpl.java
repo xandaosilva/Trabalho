@@ -14,21 +14,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import model.domain.Curso;
+import model.facade.CursoFacade;
 import model.service.CursoService;
 
 @Path("/curso")
 @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-public class CursoFacade {
+public class CursoFacadeImpl implements CursoFacade{
 
 	@Inject
 	private CursoService cursoService;
 	
+	@Override
 	@GET
 	public List<Curso> getCursosSemParametro(){
 		return cursoService.getCursos(new Curso());
 	}
 	
+	@Override
 	@GET
 	@Path("/{codigo}")
 	public List<Curso> getCursos(@PathParam("codigo") Integer codigo){
@@ -37,16 +40,19 @@ public class CursoFacade {
 		return cursoService.getCursos(curso);
 	}
 	
+	@Override
 	@POST
 	public Curso salvar(Curso curso){
 		return cursoService.salvar(curso);
 	}
 	
+	@Override
 	@PUT
 	public void atualizar(Curso curso){
 		cursoService.atualizar(curso);
 	}
 	
+	@Override
 	@DELETE
 	@Path("/{codigo}")
 	public void excluir(@PathParam("codigo") Integer codigo){
